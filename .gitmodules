@@ -1,0 +1,6 @@
+[submodule "ViveTrackerSolver"]
+	path = ViveTrackerSolver
+	url = http://github.com/fughilli/ViveTrackerSolver
+[submodule "ViveFPGACapture"]
+	path = ViveFPGACapture
+	url = http://github.com/fughilli/ViveFPGACapture
