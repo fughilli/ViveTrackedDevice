@@ -90,13 +90,14 @@ minute to reliably capture with the light-based tracking method.
 
 In order to track an object, the following problems have to be solved:
 - detect the light pulses from the lighthouse
-- determine ```Δt_horiz``` and ```Δt_vert```
+- determine ```Δt_horiz``` and ```Δt_vert```, and the corresponding angles for
+each sensor on the device
 - solve for the transformation that minimizes the error between the inferred
 device state and the measured rays
 
 The optimization problem can be described more specifically as:
 ![Formal problem definition.](
-https://github.com/fughilli/ViveTrackedDevice/raw/master/problem-statement.svg)
+https://cdn.rawgit.com/fughilli/ViveTrackedDevice/b85b3d5e/problem-statement.svg)
 
 ## System Architecture
 
