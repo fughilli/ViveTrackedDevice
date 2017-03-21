@@ -4,3 +4,6 @@
 [submodule "ViveFPGACapture"]
 	path = ViveFPGACapture
 	url = http://github.com/fughilli/ViveFPGACapture
+[submodule "ViveVisualizer"]
+	path = ViveVisualizer
+	url = https://github.com/fughilli/ViveVisualizer
