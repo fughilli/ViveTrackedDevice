@@ -1,0 +1,35 @@
+\documentclass[12pt]{article}
+\usepackage{mathtools}
+\pagestyle{empty}
+\begin{document}
+
+
+\DeclarePairedDelimiter{\opair}{\langle}{\rangle}
+
+Let
+$\vec{s}_{i}$
+be the position, relative to the sensor array orthocenter, of the
+$i^{th}$ sensor of the tracked device in the tracked device's coordinate system.
+Let:
+$$\vec{r}_{i} = \opair{
+cos(\theta_{vert,i}) \times cos(\theta_{horiz,i}),
+cos(\theta_{vert,i}) \times sin(\theta_{horiz,i}),
+sin(\theta_{vert,i})
+}$$
+be the direction vectors of the rays projected from the lighthouse (chosen, for
+simplicity, to be located at $\vec{0}$), in terms of the measured angles
+$(\theta_{vert,i},\theta_{horiz,i})$ from the sensor array.
+\newline\indent
+These rays can be written, equivalently, as the vectors from the lighthouse to
+the sensor positions in the world coordinate system,
+$\vec{r}_{i} = \mathbf{A} \vec{s}_{i} + \vec{b}$
+, where $\mathbf{A}$ is the rotation matrix and $\vec{b}$ is the translation
+vector that together take a point in the device coordinate system to the world
+coordinate system.
+\newline\indent
+Estimate the true device position and orientation, $(\mathbf{A},\vec{b})$,
+as $(\mathbf{A}',\vec{b}')$, such that:
+$$(\mathbf{A}',\vec{b}')=argmin_{(\mathbf{A}',\vec{b}')}\sum_{i} \|proj_{\vec{r}_{i}^{\perp}}(\mathbf{A}' \vec{s}_{i} + \vec{b}')\|$$
+
+
+\end{document}
