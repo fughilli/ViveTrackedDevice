@@ -4,7 +4,8 @@ This repo contains all of the documentation and source code for a
 SteamVR-compatible tracked device. This implementation is derived from reverse
 engineering work I performed during my EE113D design project to determine the
 operating principles behind the SteamVR tracking system. My project report for
-that design project is available [here]().
+that design project is available [here](
+https://github.com/fughilli/ViveTrackedDevice/raw/master/design-project-paper.pdf).
 
 ## The SteamVR System
 
