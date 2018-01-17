@@ -62,9 +62,10 @@ The SteamVR system, and the HTC Vive for that matter, is capable of using more
 than one lighthouse simultaneously in the tracking space. In this scenario, one
 lighthouse is designated as the "master", and the additional lighthouses are
 "slaves". The master sets the timebase (the other lighthouses align their 120Hz
-sync pulses against the master optically), and then each lighthouse takes turns
-round-robin-style sweeping their rotors through their FOV. In a two-lighthouse
-setup, the rotors are spinning at 30Hz apiece in order to achieve this.
+sync pulses against the master optically). Each lighthouse takes a turn enabling
+its line lasers round-robin-style, such that each completes a horizontal and
+vertical sweep before disabling its line lasers and allowing the next lighthouse
+its turn. Multi-lighthouse support is not currently implemented in this project.
 
 ### The Tracked Device
 
@@ -118,10 +119,11 @@ https://github.com/fughilli/ViveTrackedDevice/raw/master/analog-frontend-part.pn
 
 The FPGA implements a soft PLL which phase-aligns an internal 120Hz clock
 against the lighthouse's 120Hz sync pulse. Once the desired accuracy has been
-achieved, timer capture blocks begin counting on the internal 120Hz clock, and
-stop counting at the falling edge of each of the sweep pulses. These captured
-values are buffered on the FPGA, and an interrupt line to the MCU flags that
-the data is ready.
+achieved, timer capture blocks begin counting on each edge of the internal 120Hz
+clock. On both the rising and falling edges of each sweep pulse, the timer is
+sampled, and these two samples are averaged to determine the centroid of the
+pulse. These captured values are buffered on the FPGA, and an interrupt line to
+the MCU flags that the data is ready.
 
 The microcontroller implements an interative solver which minimizes the linear
 error of the inferred device state against the measurements from the frontend.
